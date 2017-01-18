@@ -1,0 +1,7 @@
+name: "mauriciogtec's rGallery"
+navbar:
+  title: "mauriciogtec's rGallery"
+  left:
+    - text: "Home"
+      href: index.html
+output_dir: "docs"
