@@ -1,6 +1,6 @@
-name: "mauriciogtec's rGallery"
+name: "mauriciogtec rGallery"
 navbar:
-  title: "mauriciogtec's rGallery"
+  title: "mauriciogtec rGallery"
   left:
     - text: "Home"
       href: index.html
