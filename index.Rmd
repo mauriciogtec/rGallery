@@ -1,18 +1,29 @@
 ---
-title: "rGallery"
-author: "Mauricio Benjamin Garcia Tec"
-date: "January 18, 2017"
+title: ""
+author: "dd"
+date: ""
 output: html_document
 ---
 
-Welcome I want to build an index
+### Welcome to my personal R Gallery
+
+This page host's my R scripts. I write them using R Markdown and post them here. This is not a blog, but an indexed container of my scripts, hosted with Github pages and generated with RStudio's rmarkdown utilities.
+
+#### Index
+
 
 ```{r, results='asis', echo = FALSE}
-files <- list.files("gallery_files", recursive = TRUE)
-files <- files[grep("\\.html$", files)]
-for (i in seq_along(files)) {
-  cat(sprintf("[%s](gallery_files/%s)", files[1], files[1]))  
+folder_list <- list.files("entries")
+for (folder in folder_list) {
+  file_list <- list.files(paste0("entries/", folder))
+  # files <- files[grep("\\.html$", files)]  
+  cat(paste0(folder, "/"), "<br/>")
+  for (file in file_list) {
+    cat(sprintf("&emsp; |- - [%s](entries/%s/%s) <br/>", file, folder, file))  
+  }
 }
+
+
 
 ```
 
