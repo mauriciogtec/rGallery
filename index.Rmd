@@ -5,6 +5,8 @@ date: ""
 output: html_document
 ---
 
+
+
 ### Welcome to my personal R Gallery
 
 This page host's my R scripts. I write them using R Markdown and post them here. This is not a blog, but an indexed container of my scripts, hosted with Github pages and generated with RStudio's rmarkdown utilities.
@@ -13,7 +15,8 @@ This page host's my R scripts. I write them using R Markdown and post them here.
 
 
 ```{r, results='asis', echo = FALSE}
-folder_list <- list.files("entries")
+folder_list <- na.omit(stringr::str_extract(list.files("entries"), "^[0-9]{8}"))
+folder_list <- sort(folder_list, decreasing = TRUE)
 for (folder in folder_list) {
   file_list <- list.files(paste0("entries/", folder))
   # files <- files[grep("\\.html$", files)]  
