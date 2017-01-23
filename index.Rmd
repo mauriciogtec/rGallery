@@ -11,7 +11,7 @@ Welcome I want to build an index
 files <- list.files("gallery_files", recursive = TRUE)
 files <- files[grep("\\.html$", files)]
 for (i in seq_along(files)) {
-  cat(sprintf("[%s](%s)", files[1], files[1]))  
+  cat(sprintf("[%s](gallery_files/%s)", files[1], files[1]))  
 }
 
 ```
