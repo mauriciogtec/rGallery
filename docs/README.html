@@ -9,11 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Mauricio Benjamin Garcia Tec" />
 
-<meta name="date" content="2017-01-18" />
 
-<title>rGallery</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,12 +19,11 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="site_libs/highlight/default.css"
-      type="text/css" />
-<script src="site_libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -153,7 +150,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -194,14 +190,11 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">rGallery</h1>
-<h4 class="author"><em>Mauricio Benjamin Garcia Tec</em></h4>
-<h4 class="date"><em>January 18, 2017</em></h4>
 
 </div>
 
 
-<p>Test</p>
+<p>ÿþ#</p>
 
 
 
@@ -211,8 +204,11 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 

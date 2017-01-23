@@ -5,4 +5,14 @@ date: "January 18, 2017"
 output: html_document
 ---
 
-Test
+Welcome I want to build an index
+
+```{r, results='asis', echo = FALSE}
+files <- list.files("gallery", recursive = TRUE)
+files <- files[grep("\\.html$", files)]
+for (i in seq_along(files)) {
+  cat(sprintf("[%s](%s)", files[1], files[1]))  
+}
+
+```
+
