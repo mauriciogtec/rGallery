@@ -5,28 +5,36 @@ date: ""
 output: html_document
 ---
 
-
+<div style="height: 20px"></div>
 
 ### Welcome to my personal R Gallery
 
-This page host's my R scripts. I write them using R Markdown and post them here. This is not a blog, but an indexed container of my scripts, hosted with Github pages and generated with RStudio's rmarkdown functions.
+This page host my R scripts. I write them using R Markdown and post them here. This is not a blog, but an indexed container of my scripts, hosted with Github pages and generated with RStudio's rmarkdown functions.
 
 #### Index
 
 
 ```{r, results='asis', echo = FALSE}
-folder_list <- na.omit(stringr::str_extract(list.files("entries"), "^[0-9]{8}"))
+folder_list <- list.files("entries")
+# folder_list <- na.omit(stringr::str_extract(folder_list, "^[0-9]{8}"))
 folder_list <- sort(folder_list, decreasing = TRUE)
 for (folder in folder_list) {
-  file_list <- list.files(paste0("entries/", folder))
-  # files <- files[grep("\\.html$", files)]  
   cat(paste0(folder, "/"), "<br/>")
+  content <- list.files(paste0("entries/", folder))
+  file_list <- content[grepl("\\.html$|\\.Rmd$", content)]
   for (file in file_list) {
-    cat(sprintf("&emsp; |- - [%s](entries/%s/%s) <br/>", file, folder, file))  
+    cat(sprintf("|- - [%s](entries/%s/%s) <br/>", file, folder, file))  
+  }
+  dir_list <- content[!grepl("\\.html$|\\.Rmd$", content)]
+  for (dir in dir_list) {
+    cat("| - - ", paste0(dir, "/"), "<br/>")
+    subcontent <- list.files(paste0("entries/", folder, "/", dir))
+    file_list <- subcontent[grepl("\\.html$|\\.Rmd$", subcontent)]
+    for (file in file_list) {
+      cat(sprintf("|- - |- - [%s](entries/%s/%s/%s) <br/>", file, folder, dir, file))  
+    }
   }
 }
-
-
 
 ```
 

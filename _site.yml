@@ -1,6 +1,6 @@
 name: "rGallery"
 navbar:
-  title: "by mauriciogtec"
+  title: "Mauricio Garcia Tec's rGallery"
   left:
     - text: "Home"
       href: index.html
@@ -9,3 +9,7 @@ navbar:
     - text: "Github"
       href: https://github.com/mauriciogtec/rGallery
 output_dir: "docs"
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate

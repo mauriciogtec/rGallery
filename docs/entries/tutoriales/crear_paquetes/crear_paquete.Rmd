@@ -3,14 +3,10 @@ title: "Hacer y documentar un paquete de R en 20 minutos"
 author: "Mauricio García Tec"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{crear_paquete}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  rmarkdown::html_document
 ---
 
-```{r, echo FALSE}
+```{r, echo = FALSE}
 library("metodosMultivariados2017")
 ```
 
@@ -310,3 +306,5 @@ devtools::install_github("mauriciogtec/metodosMultivariados2017")
 ```
 
 Con esto ya podemos comenzar a usar nuestro paquete desde cualquier máquina.
+
+[back to gallery](https://mauriciogtec.github.io/rGallery)
