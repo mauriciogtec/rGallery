@@ -1,7 +1,7 @@
-name: "mauriciogtec rGallery"
+name: "mauriciogtec's rGallery"
 navbar:
-  title: "mauriciogtec rGallery"
+  title: "my gallery"
   left:
-    - text: "Home"
-      href: index.html
+  - text: "Home"
+    ref: "index.html"
 output_dir: "docs"
