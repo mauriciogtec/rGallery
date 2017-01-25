@@ -307,4 +307,4 @@ devtools::install_github("mauriciogtec/metodosMultivariados2017")
 
 Con esto ya podemos comenzar a usar nuestro paquete desde cualquier máquina.
 
-[back to gallery](https://mauriciogtec.github.io/rGallery)
+[Back to gallery](https://mauriciogtec.github.io/rGallery)
