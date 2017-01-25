@@ -1,6 +1,6 @@
 ---
 title: "Hacer y documentar un paquete de R en 20 minutos"
-author: "Mauricio GarcÌa Tec"
+author: "Mauricio Garc√≠a Tec"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_document
@@ -13,25 +13,25 @@ library("metodosMultivariados2017")
 ![](fast.png)
 
 
-## øDe quÈ es este tutorial?
+## ¬øDe qu√© es este tutorial?
 
-Esta es una guÌa para crear un paquete de R y documentarlo de manera pr·ctica y sencilla. Cualquier persona con conocimiento basico de R puede crear su paquete gracias al paquete `devtools` creado por el equipo de R y RStudio en conjunto.
+Esta es una gu√≠a para crear un paquete de R y documentarlo de manera pr√°ctica y sencilla. Cualquier persona con conocimiento basico de R puede crear su paquete gracias al paquete `devtools` creado por el equipo de R y RStudio en conjunto.
 
-Como ejemplo, voy a crear un paquete llamado *metodosMultivariados2017*, que usarÈ este semestre en el curso de maestrÌa *MÈtodos Multivariados en Ciencias de Datos y EstadÌstica* impartido en el Instituto TecnolÛgico AutÛnomo de MÈxico (ITAM) en la primavera de 2017. 
+Como ejemplo, voy a crear un paquete llamado *metodosMultivariados2017*, que usar√© este semestre en el curso de maestr√≠a *M√©todos Multivariados en Ciencias de Datos y Estad√≠stica* impartido en el Instituto Tecnol√≥gico Aut√≥nomo de M√©xico (ITAM) en la primavera de 2017. 
 
-Este tutorial es ˙til para cualquier persona interesada en crear un paquete--no solo estudiantes de la clase--y es f·cil de leer. 
+Este tutorial es √∫til para cualquier persona interesada en crear un paquete--no solo estudiantes de la clase--y es f√°cil de leer. 
 
 #### Prerequisitos
-Tener instalado R (este tutorial est· hecho con la versiÛn 3.3.2) y los paquetes `devtools` y `roxygen2`. Si est·n en Windows, necesitar·n adicionalmente instalar `Rtools`, que se descarga como un instalable de la p·gina principal de R, aquÌ un [link](http://cran.itam.mx/bin/windows/Rtools/) al CRAN del ITAM. Se recomienda usar [RStudio](https://www.rstudio.com/) por comodidad, pero no es necesario. Versiones recientes de  Rstudio descargan `Rtools` por ustedes la primera vez que lo necesiten.
+Tener instalado R (este tutorial est√° hecho con la versi√≥n 3.3.2) y los paquetes `devtools` y `roxygen2`. Si est√°n en Windows, necesitar√°n adicionalmente instalar `Rtools`, que se descarga como un instalable de la p√°gina principal de R, aqu√≠ un [link](http://cran.itam.mx/bin/windows/Rtools/) al CRAN del ITAM. Se recomienda usar [RStudio](https://www.rstudio.com/) por comodidad, pero no es necesario. Versiones recientes de  Rstudio descargan `Rtools` por ustedes la primera vez que lo necesiten.
 
 ## 1. El esqueleto del paquete
 
-Lo primero que tenemos que hacer es crear la estructura del paquete. Para los interesado en entender que est· detr·s de lo que vamos a hacer, recomiendo dar una lectura r·pida a
+Lo primero que tenemos que hacer es crear la estructura del paquete. Para los interesado en entender que est√° detr√°s de lo que vamos a hacer, recomiendo dar una lectura r√°pida a
 
-+ [DocumentaciÛn de R (Writing R extensions)](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
-+ [DocumentaciÛn de RStudio (Developing Packages with RStudio)](https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwiW957hy8zRAhULxLwKHYbKAFIQFggrMAI&url=https%3A%2F%2Fsupport.rstudio.com%2Fhc%2Fen-us%2Farticles%2F200486488-Developing-Packages-with-RStudio&usg=AFQjCNEaqKt4dLYm2gP4UxyuUy5MxWMDPQ)
++ [Documentaci√≥n de R (Writing R extensions)](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
++ [Documentaci√≥n de RStudio (Developing Packages with RStudio)](https://www.google.com.mx/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwiW957hy8zRAhULxLwKHYbKAFIQFggrMAI&url=https%3A%2F%2Fsupport.rstudio.com%2Fhc%2Fen-us%2Farticles%2F200486488-Developing-Packages-with-RStudio&usg=AFQjCNEaqKt4dLYm2gP4UxyuUy5MxWMDPQ)
 
-Para crear la estructura del paquete lo ˙nico que tenemos hacer es correr la funciÛn `devtools::create` e incluir el *path* (direcciÛn) donde queremos crear el paquete y el nombre, en mi caso, crearÈ el paquete `metodosMultivariados2017` en la carpeta `C:/Github/`. Pueden cambiar `metodosMultivariados2017` por el tÌtulo de su paquete, el cÛdigo en mi caso resultante es:
+Para crear la estructura del paquete lo √∫nico que tenemos hacer es correr la funci√≥n `devtools::create` e incluir el *path* (direcci√≥n) donde queremos crear el paquete y el nombre, en mi caso, crear√© el paquete `metodosMultivariados2017` en la carpeta `C:/Github/`. Pueden cambiar `metodosMultivariados2017` por el t√≠tulo de su paquete, el c√≥digo en mi caso resultante es:
 
 ```{r, eval = FALSE}
 devtools::create(path = "D:/Github/metodosMultivariados2017") 
@@ -39,7 +39,7 @@ devtools::create(path = "D:/Github/metodosMultivariados2017")
 
 
 
-Con esto se crear· una carpeta con el nombre del paquete en la direcciÛn especÌficada con dos archivos --`DESCRIPTION` y `NAMESPACE`--y una subcarpeta `R/` donde guardaremos las funciones que estar·n en el paquete. 
+Con esto se crear√° una carpeta con el nombre del paquete en la direcci√≥n espec√≠ficada con dos archivos --`DESCRIPTION` y `NAMESPACE`--y una subcarpeta `R/` donde guardaremos las funciones que estar√°n en el paquete. 
 
 ```
 metodosMultivariados2017/ 
@@ -48,13 +48,13 @@ metodosMultivariados2017/
   |-- NAMESPACE
   |-- R/
 ```
-Si est·n en Rstudio y saben usar proyectos, notar·n que se crear· tamibÈn un proyecto en la carpeta con el mismo nombre del paquete, si lo abren, autom·ticamente cambi·ra el directorio de trabajo al del paquete y Rstudio habilitar· las herramientas de desarrollo. Si no est·n en Rstudio, deber·n cambiar el directorio de trabajo a la nueva carpeta creada para el paquete, en mi caso, `D:/Github/metodosMultivariados2017/`.
+Si est√°n en Rstudio y saben usar proyectos, notar√°n que se crear√° tamib√©n un proyecto en la carpeta con el mismo nombre del paquete, si lo abren, autom√°ticamente cambi√°ra el directorio de trabajo al del paquete y Rstudio habilitar√° las herramientas de desarrollo. Si no est√°n en Rstudio, deber√°n cambiar el directorio de trabajo a la nueva carpeta creada para el paquete, en mi caso, `D:/Github/metodosMultivariados2017/`.
 
 Veamos que son los archivos creados.
 
 #### DESCRIPTION
 
-Este archivo contiene la informaciÛn general del paquete: datos como el autor, quiÈn lo mantiene, la versiÛn, las dependencias, etc. Inicialmente se ve asÌ:
+Este archivo contiene la informaci√≥n general del paquete: datos como el autor, qui√©n lo mantiene, la versi√≥n, las dependencias, etc. Inicialmente se ve as√≠:
 
 ```yaml
 Package: metodosMultivariados2017
@@ -68,9 +68,9 @@ Encoding: UTF-8
 LazyData: true
 
 ```
-Debemos cambiar el tÌtulo, versiÛn, autor y descripciÛn del paquete, pueden asimismo incluir una licencia. Las entradas de `Encoding` y `LazyData` pueden quedarse como est·n.
+Debemos cambiar el t√≠tulo, versi√≥n, autor y descripci√≥n del paquete, pueden asimismo incluir una licencia. Las entradas de `Encoding` y `LazyData` pueden quedarse como est√°n.
 
-El campo `Depends` es el m·s dificil de difÌcil de entender. Su funciÛn es controlar el sistema de dependencias, es decir, incluir aquellos paquetes necesarios para que nuestro paquete sirva. El problema es que con el tiempo, la manera oficial recomendada por el equipo de R de trabajar las dependencias ha ido cambiando con el tiempo y hoy en dÌa se recomienda dejar intacto el campo`Depends` y agregar en cambio un nuevo campo llamado `Imports` que por el momento estarÌa vacÌo.  En el campo `Imports` debemos listar todos los paquetes que deben ser instalados justo con nuestra paqueterÌa. El archivo DESCRIPTION deber· por lo tanto quedar como sigue.
+El campo `Depends` es el m√°s dificil de dif√≠cil de entender. Su funci√≥n es controlar el sistema de dependencias, es decir, incluir aquellos paquetes necesarios para que nuestro paquete sirva. El problema es que con el tiempo, la manera oficial recomendada por el equipo de R de trabajar las dependencias ha ido cambiando con el tiempo y hoy en d√≠a se recomienda dejar intacto el campo`Depends` y agregar en cambio un nuevo campo llamado `Imports` que por el momento estar√≠a vac√≠o.  En el campo `Imports` debemos listar todos los paquetes que deben ser instalados justo con nuestra paqueter√≠a. El archivo DESCRIPTION deber√° por lo tanto quedar como sigue.
 
 ```yaml
 Package: metodosMultivariados2017
@@ -87,20 +87,20 @@ LazyData: true
 
 #### NAMESPACE
 
-El propÛsito de este archivo es incluir los nombres de las funciones que estar·n disponibles para los usuarios cuando carguen el paquete asÌ como incluir las funciones de otros paquetes que nosotros podremos usar en nuestra programaciÛn sin necesidad de usar el operador `::`. 
+El prop√≥sito de este archivo es incluir los nombres de las funciones que estar√°n disponibles para los usuarios cuando carguen el paquete as√≠ como incluir las funciones de otros paquetes que nosotros podremos usar en nuestra programaci√≥n sin necesidad de usar el operador `::`. 
 
 El archivo NAMESPACE inclye una lista de *exports*/*imports*.
 
-- Los *exports* son todas las funciones definidas en la paqueterÌa o importadas de otras paqueterÌas que queremos que el usuario del paquete pueda usar. 
-- Los *imports* se usan cuando el cÛdigo de nuestras funciones depende muchÌsimo de funciones de otros paquetes; muy rara vez se usan porque la buena pr·ctica al programar paquetes es escribir una funciÛn de la forma `paquete::funcion(args)` en vez de `library(paquete)` seguido de `funcion(args)`; evitando problemas generados cuando los nombres de nuestras funciones o de las funciones que usamos se duplican en el ambiente de trabajo.
+- Los *exports* son todas las funciones definidas en la paqueter√≠a o importadas de otras paqueter√≠as que queremos que el usuario del paquete pueda usar. 
+- Los *imports* se usan cuando el c√≥digo de nuestras funciones depende much√≠simo de funciones de otros paquetes; muy rara vez se usan porque la buena pr√°ctica al programar paquetes es escribir una funci√≥n de la forma `paquete::funcion(args)` en vez de `library(paquete)` seguido de `funcion(args)`; evitando problemas generados cuando los nombres de nuestras funciones o de las funciones que usamos se duplican en el ambiente de trabajo.
 
-<em>**°OJO!**: Este archivo **NUNCA** lo modificaremos manualmente gracias a `devtools`--m·s especificamente, al paquete `roxygen2` llamado por `devtools`--Para nosotros, definir el NAMESPACE y documentar ser·n parte de la misma tarea.</em>
+<em>**¬°OJO!**: Este archivo **NUNCA** lo modificaremos manualmente gracias a `devtools`--m√°s especificamente, al paquete `roxygen2` llamado por `devtools`--Para nosotros, definir el NAMESPACE y documentar ser√°n parte de la misma tarea.</em>
 
 ## 2. Creando y documentando funciones
 
-Vamos a comenzar creando una funciÛn llamada `timesTwo` y la vamos a poner en un *script* llamado `timesTwo.R` dentro de la carpeta  `R/` de nuestro paquete.
+Vamos a comenzar creando una funci√≥n llamada `timesTwo` y la vamos a poner en un *script* llamado `timesTwo.R` dentro de la carpeta  `R/` de nuestro paquete.
 
-La funciÛn queda
+La funci√≥n queda
 
 ```
 metodosMultivariados2017/ 
@@ -118,18 +118,18 @@ timesTwo <- function(x) {
 }
 ```
 
-<em>**Una nota**: En realidad no hay ninguna necesidad de que est· funciÛn estÈ en un archivo llamado `timesTwo.R`, por defecto, al construir el paquete se buscar·n *todas* las funciones de la carpeta `R/` sin importar el nombre del archivo en el que estÈn. Incluso puede haber muchas funciones o todas en un mismo archivo. Lo hicimos aquÌ de esta manera para que la pr·ctica sea m·s clara y ordenada.</em>
+<em>**Una nota**: En realidad no hay ninguna necesidad de que est√° funci√≥n est√© en un archivo llamado `timesTwo.R`, por defecto, al construir el paquete se buscar√°n *todas* las funciones de la carpeta `R/` sin importar el nombre del archivo en el que est√©n. Incluso puede haber muchas funciones o todas en un mismo archivo. Lo hicimos aqu√≠ de esta manera para que la pr√°ctica sea m√°s clara y ordenada.</em>
 
-A˙n no hemos visto como "construir" el paquete una vez que aÒadimos funciones. Si construyÈsemos el paquete en este momento la funciÛn no estarÌa disponible todavÌa porque no est· en el NAMESPACE. En viejos tiempos, tendrÌamos que poner un comando `export(timesTwo)` en el archivo NAMESPACE para lograrlo.  Pero *No* haremos esto, mataremos dos p·jaros de un tiro usando `roxygen2` y documentaremos la funciÛn, manejando el NAMESPACE al mismo tiempo, haciendo las cosas m·s sencillas.
+A√∫n no hemos visto como "construir" el paquete una vez que a√±adimos funciones. Si construy√©semos el paquete en este momento la funci√≥n no estar√≠a disponible todav√≠a porque no est√° en el NAMESPACE. En viejos tiempos, tendr√≠amos que poner un comando `export(timesTwo)` en el archivo NAMESPACE para lograrlo.  Pero *No* haremos esto, mataremos dos p√°jaros de un tiro usando `roxygen2` y documentaremos la funci√≥n, manejando el NAMESPACE al mismo tiempo, haciendo las cosas m√°s sencillas.
 
 #### Documentando timesTwo
 
 
-Una de las ventajas de tener un paquete es que nos obligamos a documentar nuestras funciones. Es muy com˙n que olvidemos cu·l era el objetivo o los usos de algunas de nuestras funciones si no documentamos.
+Una de las ventajas de tener un paquete es que nos obligamos a documentar nuestras funciones. Es muy com√∫n que olvidemos cu√°l era el objetivo o los usos de algunas de nuestras funciones si no documentamos.
 
-Si han usado R entonces est·n familiarizados con las funciones de ayuda `?` o mejor a˙n `help`. Lo que queremos es que el usuario pueda consultar la documentaciÛn de las funciones de nuestro paquete usando `?` y `help`, o incluso correr ejemplos.
+Si han usado R entonces est√°n familiarizados con las funciones de ayuda `?` o mejor a√∫n `help`. Lo que queremos es que el usuario pueda consultar la documentaci√≥n de las funciones de nuestro paquete usando `?` y `help`, o incluso correr ejemplos.
 
-En un mundo sin paquetes, la pr·ctica mundana para recordar el propÛsito de una funciÛn al programar es incluir comentarios previos su definiciÛn, por ejemplo:
+En un mundo sin paquetes, la pr√°ctica mundana para recordar el prop√≥sito de una funci√≥n al programar es incluir comentarios previos su definici√≥n, por ejemplo:
 
 ```{r, eval = FALSE}
 # esta funcion multiplica por dos
@@ -138,9 +138,9 @@ timesTwo <- function(x) {
 }
 ```
 
-La idea que inspira a `roxygen2` es usar directivas que parecen comentarios antes de la funciÛn y dejar que un interprete cree toda la documentaciÛn necesaria por nosotros y la ponga en las carperas correctas para que al cargar el paquete puedan consultarse con `?`. En el pasado, para documentar una funciÛn habÌa que crear documentos de Latex y ponerlos en una carpeta llamada `man/`, hoy simplemente tenemos que usar estos comentarios/directivas en todas nuestra funciones en la carpeta `R/` y tagearlos con campos correspondientes a la documentaciÛn.
+La idea que inspira a `roxygen2` es usar directivas que parecen comentarios antes de la funci√≥n y dejar que un interprete cree toda la documentaci√≥n necesaria por nosotros y la ponga en las carperas correctas para que al cargar el paquete puedan consultarse con `?`. En el pasado, para documentar una funci√≥n hab√≠a que crear documentos de Latex y ponerlos en una carpeta llamada `man/`, hoy simplemente tenemos que usar estos comentarios/directivas en todas nuestra funciones en la carpeta `R/` y tagearlos con campos correspondientes a la documentaci√≥n.
 
-Por ejemplo, para documentar la funciÛn `timesTwo` podemos hacer lo siguiente
+Por ejemplo, para documentar la funci√≥n `timesTwo` podemos hacer lo siguiente
 
 ```{r, eval = FALSE}
 #' @title Multiplicar por dos
@@ -161,21 +161,21 @@ timesTwo <- function(x) {
 
 Algunas observaciones:
 
-- Los comentarios est·n marcados con `#'` en vez de `#`. Por un lado, al comenzar con `#`, son comentarios comunes, por lo que no interfieren a la hora de correr cÛdigo. Por otro lado, incluir el apÛstrofe  `'` da la instrucciÛn a  `roxygen2` de interpretar esas directivas.
-- Los *tags* de la documentaciÛn son marcados con el sÌmbolo `@` y corresponden directamente a los campos de la documentaciÛn de ayuda.
-- El ˙nico tag que no pertenece a la documentaciÛn es `@export`. Este es el *tag* que indica a `roxygen2` poner est· funciÛn en el NAMESPACE para exportarla.
-- Funciones que no tengan `@export` pueden ser utilizadas por otras funciones dentro del paquete, pero no por el usuario que cargue la librerÌa directamente.
+- Los comentarios est√°n marcados con `#'` en vez de `#`. Por un lado, al comenzar con `#`, son comentarios comunes, por lo que no interfieren a la hora de correr c√≥digo. Por otro lado, incluir el ap√≥strofe  `'` da la instrucci√≥n a  `roxygen2` de interpretar esas directivas.
+- Los *tags* de la documentaci√≥n son marcados con el s√≠mbolo `@` y corresponden directamente a los campos de la documentaci√≥n de ayuda.
+- El √∫nico tag que no pertenece a la documentaci√≥n es `@export`. Este es el *tag* que indica a `roxygen2` poner est√° funci√≥n en el NAMESPACE para exportarla.
+- Funciones que no tengan `@export` pueden ser utilizadas por otras funciones dentro del paquete, pero no por el usuario que cargue la librer√≠a directamente.
 
 #### Construyendo el paquete
 
-Es momento de utilizar `devtools` para construir y documentar el paquete. Esto se lograr· atravÈs de dos comandos 
+Es momento de utilizar `devtools` para construir y documentar el paquete. Esto se lograr√° atrav√©s de dos comandos 
 
 ```{r, eval = FALSE, echo = FALSE}
 devtools::document()
 devtools::install()
 ```
 
-El paquete est· listo, ahora sÌ podemos probarlo
+El paquete est√° listo, ahora s√≠ podemos probarlo
 
 ```{r}
 library(metodosMultivariados2017)
@@ -185,7 +185,7 @@ timesTwo(3)
 example(timesTwo)
 ```
 
-Ahora veamos si la ayuda de la funciÛn `timesTwo` y de nuestro paquete
+Ahora veamos si la ayuda de la funci√≥n `timesTwo` y de nuestro paquete
 
 ```{r, eval = FALSE}
 help(package = "metodosMultivariados2017")
@@ -201,7 +201,7 @@ help(timesTwo)
 
 #### Las modificaciones hechas por roxygen2
 
-Al documentarse el paquete, autom·ticamente se crearon nuevos archivos en formato `.Rd` y sintaxis de `.tex` en la carpeta de documentaciÛn o manuales `man/`. Actualmente la estructura del paquete es:
+Al documentarse el paquete, autom√°ticamente se crearon nuevos archivos en formato `.Rd` y sintaxis de `.tex` en la carpeta de documentaci√≥n o manuales `man/`. Actualmente la estructura del paquete es:
 
 ```
 metodosMultivariados2017/ 
@@ -225,14 +225,14 @@ export(timesTwo)
 
 ## 4. Funciones que dependen de otros paquetes 
 
-En este momento debemos estar muy felices al tener ya un paquete hecho y corriendo. *°No tan r·pido!* Una de las inconveniencias de trabajar con paquetes es tener que hacer explÌcita la dependencia de otros paquetes. Es muy f·cil incurrir en malas pr·cticas de programaciÛn.
+En este momento debemos estar muy felices al tener ya un paquete hecho y corriendo. *¬°No tan r√°pido!* Una de las inconveniencias de trabajar con paquetes es tener que hacer expl√≠cita la dependencia de otros paquetes. Es muy f√°cil incurrir en malas pr√°cticas de programaci√≥n.
 
 
-#### Ejemplo: incluyendo %>% en nuestra paqueterÌa
+#### Ejemplo: incluyendo %>% en nuestra paqueter√≠a
 
 Supongamos que queremos incluir el operador de pipa `%>%` del paquete `magrittr` y usarlo en nuestras funciones.
 
-Los primero que tenemos que hacer es asegurarnos que al instalar nuestra paqueterÌa se instale `magrittr`. Para eso tenemos que modificar el archivo DESCRIPTION e incluirlo en la lista de `Imports`:
+Los primero que tenemos que hacer es asegurarnos que al instalar nuestra paqueter√≠a se instale `magrittr`. Para eso tenemos que modificar el archivo DESCRIPTION e incluirlo en la lista de `Imports`:
 
 ```yaml
 Package: metodosMultivariados2017
@@ -247,9 +247,9 @@ Encoding: UTF-8
 LazyData: true
 ```
 
-TeÛricamente, ya podemos usar la funciÛn, pero cualquier funciÛn de  `magrittr`, sin embargo tendrÌamos que llamarlas de la forma `magrittr::function`. Esto es lo que se **recomienda** hacer la mayorÌa de las veces. No obstante, en el caso particular del operador pipa, nos conviene poder usarlo in tener que escribir tanto. Para esto necesitamos un *tag* m·s `@import magrittr`. **No** debemos usar `library` o `require` en ninguna parte de nuestro cÛdigo, lo recomendado es usar `@import`.
+Te√≥ricamente, ya podemos usar la funci√≥n, pero cualquier funci√≥n de  `magrittr`, sin embargo tendr√≠amos que llamarlas de la forma `magrittr::function`. Esto es lo que se **recomienda** hacer la mayor√≠a de las veces. No obstante, en el caso particular del operador pipa, nos conviene poder usarlo in tener que escribir tanto. Para esto necesitamos un *tag* m√°s `@import magrittr`. **No** debemos usar `library` o `require` en ninguna parte de nuestro c√≥digo, lo recomendado es usar `@import`.
 
-Por ejemplo, la siguiente es una implementaciÛn de multiplicar por 4 que usa `timesTwo` y ``%>%`:
+Por ejemplo, la siguiente es una implementaci√≥n de multiplicar por 4 que usa `timesTwo` y ``%>%`:
 
 ```{r, eval = FALSE}
 #' @import magrittr
@@ -270,20 +270,20 @@ timesFour <- function(x) {
 ```
 
 
-Ahora podemos correr nuevamente la construcciÛn del paquete
+Ahora podemos correr nuevamente la construcci√≥n del paquete
 
 ```{r, eval = FALSE}
 devtools::document()
 devtools::install()
 ```
 
-Y probar la funciÛn
+Y probar la funci√≥n
 
 ```{r}
 example(timesFour)
 ```
 
-Podemos ver que el archivo NAMESPACE sufriÛ nuevamente cambios autom·ticos, podemos empezar a ver lo tedioso que serÌa manejarlo si no tuvieramos `roxygen2`.
+Podemos ver que el archivo NAMESPACE sufri√≥ nuevamente cambios autom√°ticos, podemos empezar a ver lo tedioso que ser√≠a manejarlo si no tuvieramos `roxygen2`.
 
 ```{r, eval = FALSE}
 # Generated by roxygen2: do not edit by hand
@@ -295,16 +295,16 @@ import(magrittr)
 
 ## 5. Finalmente: utilizando Github para distribuir el paquete
 
-Mientras el paquete estÈ en proceso de desarrollo no podr· subirse al CRAN. Pero eso no significa que no pueda distribuirse. Para esto puden usar Github. Voy a suponer que ya est·n algo familiarizados, si no pueden empezar por [aquÌ](https://guides.github.com/).
+Mientras el paquete est√© en proceso de desarrollo no podr√° subirse al CRAN. Pero eso no significa que no pueda distribuirse. Para esto puden usar Github. Voy a suponer que ya est√°n algo familiarizados, si no pueden empezar por [aqu√≠](https://guides.github.com/).
 
-Tenemos que crear un repositorio de Github, el mÌo est· en la siguiente direcciÛn: [https://github.com/mauriciogtec/metodosMultivariados2017.git](https://github.com/mauriciogtec/metodosMultivariados2017.git).
+Tenemos que crear un repositorio de Github, el m√≠o est√° en la siguiente direcci√≥n: [https://github.com/mauriciogtec/metodosMultivariados2017.git](https://github.com/mauriciogtec/metodosMultivariados2017.git).
 
-Para instalarlo en cualquier m·quina con R, solo tenemos que correr un comando de la forma `devtools::install_github("usuario_github/nombre_repositorio")`, en mi caso:
+Para instalarlo en cualquier m√°quina con R, solo tenemos que correr un comando de la forma `devtools::install_github("usuario_github/nombre_repositorio")`, en mi caso:
 
 ```{r, eval = FALSE}
 devtools::install_github("mauriciogtec/metodosMultivariados2017")
 ```
 
-Con esto ya podemos comenzar a usar nuestro paquete desde cualquier m·quina.
+Con esto ya podemos comenzar a usar nuestro paquete desde cualquier m√°quina.
 
 [Back to gallery](https://mauriciogtec.github.io/rGallery)
