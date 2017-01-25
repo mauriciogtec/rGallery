@@ -1,7 +1,11 @@
-name: "mauriciogtec's rGallery"
+name: "rGallery"
 navbar:
-  title: "my gallery"
+  title: "by mauriciogtec"
   left:
-  - text: "Home"
-    ref: "index.html"
+    - text: "Home"
+      href: index.html
+    - text: "Blog"
+      href: https://mauriciogtec.wordpress.com
+    - text: "Github"
+      href: https://github.com/mauriciogtec/rGallery
 output_dir: "docs"
